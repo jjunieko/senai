@@ -1,0 +1,45 @@
+body {
+    width: 900px;
+    height: 1500px;
+    text-decoration: none;
+    background: #dfd9d9;
+}
+
+.menu {
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    margin: 50px;
+    margin-left: 50px;
+    text-decoration: none;
+}
+
+.menu a {
+    margin: 50px;
+    text-decoration: none;
+    color: black;
+    font-size: 50px;
+    font-weight: 700;
+    background-color: blue;
+}
+
+img {
+    align-items: center;
+    border-radius: 50px;
+    margin-left: 250px;
+    width: 300px;
+    height: 300px;
+}
+
+ul,
+li {
+    font: 700;
+    font-size: 20px;
+    align-items: center;
+    margin-left: 180px;
+}
+
+iframe {
+    border-radius: 50px;
+    margin-left: 50px;
+}

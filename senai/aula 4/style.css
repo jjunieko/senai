@@ -1,0 +1,41 @@
+h1 {
+    font: 700;
+    color: brown;
+    background: cyan;
+}
+
+td {
+    color: #f0f0f0;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.class {
+    display: block;
+    color: #f0f0f0;
+    margin-top: 100px;
+    font-weight: bold;
+    font-size: 50px;
+}
+
+iframe {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20%;
+    cursor: pointer;
+}
+
+.btn_azul {
+    color: #f0f0f0;
+    background-color: black;
+    width: 150px;
+    height: 70px;
+}
+
+#lista ul,
+li {
+    color: #f0f0f0;
+    list-style: circle;
+}
