@@ -1,0 +1,12 @@
+table {
+    width: 100%;
+}
+
+.titulo {
+    font-weight: bold;
+    color: blueviolet;
+}
+
+button {
+    margin: 16px 8px;
+}

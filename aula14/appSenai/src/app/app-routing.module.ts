@@ -1,7 +1,23 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {AngularComponent} from './angular/angular.component';
+import {ReactComponent} from './react/react.component';
+import {PartidosComponent} from './partidos/partidos.component';
+const routes: Routes = [
+  {
+    path: 'angular', 
+    component: AngularComponent,
+  },
+  {
+    path: 'react', 
+    component: ReactComponent,
+  },
+  {
+    path: 'partidos', 
+    component: PartidosComponent,
+  },
 
-const routes: Routes = [];
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
