@@ -13,6 +13,13 @@ export class ApiService {
 
   public getPartidos() {
     return this.httpclient.get(this.url + 'partidos');
-  }
+ }
+
+ public getMembros(id) {
+   var urlMembros = this.url + urlMembros + 'partidos/' + id + '/membros';
+   return this.httpclient.get(urlMembros);
+  //return this.httpclient.get(this.url + 'partidos/' + id + '/membros');
+}
+
 
 }

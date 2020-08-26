@@ -17,6 +17,7 @@ import { PartidosComponent } from './partidos/partidos.component';
 
 import {MatTableModule} from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
+import { MembrosPartComponent } from './membros-part/membros-part.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { HttpClientModule } from '@angular/common/http';
     AppComponent,
     ReactComponent,
     AngularComponent,
-    PartidosComponent
+    PartidosComponent,
+    MembrosPartComponent
   ],
   imports: [
     BrowserModule,

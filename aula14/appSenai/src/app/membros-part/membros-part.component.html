@@ -1,9 +1,17 @@
-<mat-table [dataSource]="partidos" class="mat-elevation-z8">
+<p>membros-part works!</p>
+
+
+<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="email">
+        <mat-header-cell *matHeaderCellDef class="titulo"> E-mail </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.email}} </mat-cell>
+    </ng-container>
+
     <!-- Position Column -->
     <ng-container matColumnDef="id">
         <mat-header-cell *matHeaderCellDef class="titulo"> # </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
-
     </ng-container>
 
     <!-- Name Column -->
@@ -19,16 +27,6 @@
     </ng-container>
 
 
-    <ng-container matColumnDef="membros">
-        <mat-header-cell *matHeaderCellDef class="titulo"> Membros </mat-header-cell>
-        <mat-cell *matCellDef="let element">
-            <a routerLink="/partidos/{{element.id}}/membros" routerLinkActive="active">
-                <button mat-raised-button color="accent">Membros</button>
-            </a>
-        </mat-cell>
-
-
-    </ng-container>
 
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

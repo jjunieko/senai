@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {AngularComponent} from './angular/angular.component';
-import {ReactComponent} from './react/react.component';
-import {PartidosComponent} from './partidos/partidos.component';
+import { AngularComponent } from './angular/angular.component';
+import { ReactComponent} from './react/react.component';
+import { PartidosComponent} from './partidos/partidos.component';
+import { MembrosPartComponent } from './membros-part/membros-part.component';
+
+
 const routes: Routes = [
   {
     path: 'angular', 
@@ -15,6 +18,11 @@ const routes: Routes = [
   {
     path: 'partidos', 
     component: PartidosComponent,
+  },
+
+  {
+    path: 'partidos/:id/membros', 
+    component: MembrosPartComponent,
   },
 
 ];
