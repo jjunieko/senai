@@ -30,20 +30,16 @@ id: string;
   ngOnInit(): void {
     //const idPartido = this.route.snapshot.paramMap.get('id');
 
-    this.id= this.route.snapshot.paramMap.get('id');
-    this.apiService.getMembros(this.id).subscribe((res) =>{
-      this.membros = res.dados;
-      console.log(this.membros);
+    //this.id= this.route.snapshot.paramMap.get('id');
+    //this.apiService.getMembros(this.id).subscribe((res) =>{
+    //  this.membros = res.dados;
+    //  console.log(this.membros);
+  //});
+    this.apiService
+    .getMembros(this.route.snapshot.paramMap.get('id')).subscribe((res) => {
+    this.membros = res.dados;
+    console.log(this.membros);
     });
-
-
-
-    //this.apiService
-    //.getMembros(this.route.snapshot.paramMap.get('id'))
-    //.subscribe((res) => {
-    // this.membros = res.dados;
-    //console.log(this.membros);
-    //});
   }
   }
 
