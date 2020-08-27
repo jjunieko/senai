@@ -18,6 +18,7 @@ import { PartidosComponent } from './partidos/partidos.component';
 import {MatTableModule} from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { MembrosPartComponent } from './membros-part/membros-part.component';
+import { ConverteUfSiglaEmNomePipe } from './pipes/converte-uf-sigla-em-nome.pipe';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { MembrosPartComponent } from './membros-part/membros-part.component';
     ReactComponent,
     AngularComponent,
     PartidosComponent,
-    MembrosPartComponent
+    MembrosPartComponent,
+    ConverteUfSiglaEmNomePipe
   ],
   imports: [
     BrowserModule,
@@ -39,7 +41,7 @@ import { MembrosPartComponent } from './membros-part/membros-part.component';
     MatTableModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ConverteUfSiglaEmNomePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

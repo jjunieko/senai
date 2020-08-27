@@ -1,7 +1,16 @@
-<p>membros-part works!</p>
+<mat-table [dataSource]="membros-part" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef class="titulo"> # </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    </ng-container>
 
 
-<mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <ng-container matColumnDef="nome">
+        <mat-header-cell *matHeaderCellDef class="titulo"> Nome </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.nome}} </mat-cell>
+    </ng-container>
+
 
     <ng-container matColumnDef="email">
         <mat-header-cell *matHeaderCellDef class="titulo"> E-mail </mat-header-cell>
@@ -9,21 +18,28 @@
     </ng-container>
 
     <!-- Position Column -->
-    <ng-container matColumnDef="id">
-        <mat-header-cell *matHeaderCellDef class="titulo"> # </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+    <ng-container matColumnDef="siglaUf">
+        <mat-header-cell *matHeaderCellDef class="titulo"> SiglaUf </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.siglaUf | converteUfSiglaEmNome }} </mat-cell>
     </ng-container>
 
     <!-- Name Column -->
-    <ng-container matColumnDef="sigla">
-        <mat-header-cell *matHeaderCellDef class="titulo"> Sigla </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.sigla}} </mat-cell>
+    <ng-container matColumnDef="idLegislatura">
+        <mat-header-cell *matHeaderCellDef class="titulo"> Legislatura </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.idLegislatura}} </mat-cell>
     </ng-container>
 
-    <!-- Weight Column -->
-    <ng-container matColumnDef="nome">
-        <mat-header-cell *matHeaderCellDef class="titulo"> Nome </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.nome}} </mat-cell>
+
+    <ng-container matColumnDef="siglaPartido">
+        <mat-header-cell *matHeaderCellDef class="titulo"> Partido </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.siglaPartido}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="urlFoto">
+        <mat-header-cell *matHeaderCellDef class="titulo"> urlFoto </mat-header-cell>
+        <mat-cell *matCellDef="let element"> <img [src]="element.urlFoto" alt="" /></mat-cell>
+
     </ng-container>
 
 

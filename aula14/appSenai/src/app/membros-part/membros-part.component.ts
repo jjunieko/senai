@@ -12,27 +12,46 @@ export class MembrosPartComponent implements OnInit {
 
   //aulas add membros aos partidos
 
-  displayedColumns: string[] = ['id','sigla', 'nome','email'];
+  displayedColumns: string[] = [
+  'id', 
+  'siglaUf',
+  'nome',
+  'email',
+  'idLegislatura',
+  'siglaPartido',
+  'urlFoto'
+];
   membros = [];
  
+id: string;
 
   constructor(public apiService: ApiService, public route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    const idPartido = this.route.snapshot.paramMap.get('id');
-   this.apiService.getMembros(idPartido).subscribe((res) => {
-     console.log(this.membros);
+    //const idPartido = this.route.snapshot.paramMap.get('id');
+
+    this.id= this.route.snapshot.paramMap.get('id');
+    this.apiService.getMembros(this.id).subscribe((res) =>{
+      this.membros = res.dados;
+      console.log(this.membros);
     });
 
+
+
+    //this.apiService
+    //.getMembros(this.route.snapshot.paramMap.get('id'))
+    //.subscribe((res) => {
+    // this.membros = res.dados;
+    //console.log(this.membros);
+    //});
+  }
+  }
 
 // teste para ver se aparece membros na pagina de membros 
    // this.apiService.getPartidos().subscribe((res) => {
     //  this.membros = res.dados;
     //  console.log(this.membros);
     //});
-  }
 
 
   
-
-}
