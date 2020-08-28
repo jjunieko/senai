@@ -16,9 +16,14 @@ export class ApiService {
  }
 
  public getMembros(id) {
-   var urlMembros = this.url + urlMembros + 'partidos/' + id + '/membros';
+   var urlMembros = this.url + 'partidos/' + id + '/membros';
    return this.httpclient.get(urlMembros);
   //return this.httpclient.get(this.url + 'partidos/' + id + '/membros');
+}
+
+public getDeputados(id) {
+  var urlDeputados = this.url + 'deputados/' + id;
+  return this.httpclient.get(urlDeputados);
 }
 
 

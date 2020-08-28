@@ -4,6 +4,7 @@ import { AngularComponent } from './angular/angular.component';
 import { ReactComponent} from './react/react.component';
 import { PartidosComponent} from './partidos/partidos.component';
 import { MembrosPartComponent } from './membros-part/membros-part.component';
+import { DeputadosComponent } from './deputados/deputados.component';
 
 
 const routes: Routes = [
@@ -23,6 +24,10 @@ const routes: Routes = [
   {
     path: 'partidos/:id/membros', 
     component: MembrosPartComponent,
+  },
+  {
+    path: 'deputados/:id', 
+    component: DeputadosComponent,
   },
 
 ];

@@ -19,6 +19,10 @@ import {MatTableModule} from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { MembrosPartComponent } from './membros-part/membros-part.component';
 import { ConverteUfSiglaEmNomePipe } from './pipes/converte-uf-sigla-em-nome.pipe';
+import { DeputadosComponent } from './deputados/deputados.component';
+
+import {MatDialogModule} from '@angular/material/dialog';
+
 
 
 @NgModule({
@@ -28,7 +32,8 @@ import { ConverteUfSiglaEmNomePipe } from './pipes/converte-uf-sigla-em-nome.pip
     AngularComponent,
     PartidosComponent,
     MembrosPartComponent,
-    ConverteUfSiglaEmNomePipe
+    ConverteUfSiglaEmNomePipe,
+    DeputadosComponent
   ],
   imports: [
     BrowserModule,
@@ -39,6 +44,7 @@ import { ConverteUfSiglaEmNomePipe } from './pipes/converte-uf-sigla-em-nome.pip
     MatCardModule,
     MatFormFieldModule,
     MatTableModule,
+    MatDialogModule,
     HttpClientModule
   ],
   providers: [ConverteUfSiglaEmNomePipe],

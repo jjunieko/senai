@@ -1,4 +1,4 @@
-<mat-table [dataSource]="membros-part" class="mat-elevation-z8">
+<mat-table [dataSource]="membros" class="mat-elevation-z8">
 
     <ng-container matColumnDef="id">
         <mat-header-cell *matHeaderCellDef class="titulo"> # </mat-header-cell>
@@ -20,30 +20,28 @@
     <!-- Position Column -->
     <ng-container matColumnDef="siglaUf">
         <mat-header-cell *matHeaderCellDef class="titulo"> SiglaUf </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.siglaUf | converteUfSiglaEmNome }} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{ element.siglaUf | converteUfSiglaEmNome }} </mat-cell>
     </ng-container>
 
     <!-- Name Column -->
     <ng-container matColumnDef="idLegislatura">
         <mat-header-cell *matHeaderCellDef class="titulo"> Legislatura </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.idLegislatura}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{ element.idLegislatura }} </mat-cell>
     </ng-container>
 
 
     <ng-container matColumnDef="siglaPartido">
         <mat-header-cell *matHeaderCellDef class="titulo"> Partido </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.siglaPartido}} </mat-cell>
+        <mat-cell *matCellDef="let element"> {{ element.siglaPartido }} </mat-cell>
     </ng-container>
 
 
     <ng-container matColumnDef="urlFoto">
         <mat-header-cell *matHeaderCellDef class="titulo"> urlFoto </mat-header-cell>
-        <mat-cell *matCellDef="let element"> <img [src]="element.urlFoto" alt="" /></mat-cell>
-
+        <mat-cell *matCellDef="let element">
+            <img mat-card-sm-image [src]="element.urlFoto" (onclick)="openModalDeputado(element.idDeputado)">
+        </mat-cell>
     </ng-container>
-
-
-
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

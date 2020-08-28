@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../services/api.service';
 import { ActivatedRoute } from '@angular/router';
+import { DeputadosComponent } from '../deputados/deputados.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-membros-part',
@@ -9,7 +11,8 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class MembrosPartComponent implements OnInit {
 
-
+  membros = [];
+  deputados= [];
   //aulas add membros aos partidos
 
   displayedColumns: string[] = [
@@ -21,33 +24,28 @@ export class MembrosPartComponent implements OnInit {
   'siglaPartido',
   'urlFoto'
 ];
-  membros = [];
  
-id: string;
 
-  constructor(public apiService: ApiService, public route: ActivatedRoute) { }
+  constructor(public apiService: ApiService, 
+    public route: ActivatedRoute,
+    public dialog: MatDialog) {}
 
   ngOnInit(): void {
-    //const idPartido = this.route.snapshot.paramMap.get('id');
-
-    //this.id= this.route.snapshot.paramMap.get('id');
-    //this.apiService.getMembros(this.id).subscribe((res) =>{
-    //  this.membros = res.dados;
-    //  console.log(this.membros);
-  //});
-    this.apiService
-    .getMembros(this.route.snapshot.paramMap.get('id')).subscribe((res) => {
-    this.membros = res.dados;
-    console.log(this.membros);
+    const idPartido = this.route.snapshot.paramMap.get('id');
+    this.apiService.getMembros(idPartido).subscribe((res) => {
+      this.membros = res.dados;
+      console.log(this.membros);
     });
-  }
-  }
 
-// teste para ver se aparece membros na pagina de membros 
-   // this.apiService.getPartidos().subscribe((res) => {
-    //  this.membros = res.dados;
-    //  console.log(this.membros);
-    //});
-
+}
+  openModalDeputado(idDeputado) {
+      const dialog = this.dialog.open(DeputadosComponent,{
+      data: {
+          id: idDeputado
+        }
+    });
+}
+}
+    
 
   
