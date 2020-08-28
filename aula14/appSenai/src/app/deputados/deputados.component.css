@@ -1,0 +1,13 @@
+.titulo {
+    font-weight: bold;
+    color: #db5252;
+}
+h5{
+    color: blue;
+}
+
+img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}

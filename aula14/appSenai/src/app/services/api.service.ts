@@ -21,8 +21,8 @@ export class ApiService {
   //return this.httpclient.get(this.url + 'partidos/' + id + '/membros');
 }
 
-public getDeputados(id) {
-  var urlDeputados = this.url + 'deputados/' + id;
+public getDeputado(id) {
+  var urlDeputados = this.url  + 'deputados/' + id;
   return this.httpclient.get(urlDeputados);
 }
 

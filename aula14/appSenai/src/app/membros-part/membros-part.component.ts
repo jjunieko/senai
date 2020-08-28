@@ -38,12 +38,22 @@ export class MembrosPartComponent implements OnInit {
     });
 
 }
-  openModalDeputado(idDeputado) {
-      const dialog = this.dialog.open(DeputadosComponent,{
+  openModalDeputado(id) {
+    const dialogRef = this.dialog.open(DeputadosComponent, {
       data: {
-          id: idDeputado
-        }
+        id: id,
+      },
     });
+
+   dialogRef.afterClosed().subscribe(result => {
+     console.log(`Dialog result: ${result}`);
+  });
+
+      //const dialogRef = this.dialog.open(DeputadosComponent,{
+     // data: {
+      //    id
+     //   }
+    //});
 }
 }
     

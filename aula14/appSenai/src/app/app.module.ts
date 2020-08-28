@@ -22,6 +22,7 @@ import { ConverteUfSiglaEmNomePipe } from './pipes/converte-uf-sigla-em-nome.pip
 import { DeputadosComponent } from './deputados/deputados.component';
 
 import {MatDialogModule} from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -45,7 +46,8 @@ import {MatDialogModule} from '@angular/material/dialog';
     MatFormFieldModule,
     MatTableModule,
     MatDialogModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [ConverteUfSiglaEmNomePipe],
   bootstrap: [AppComponent]

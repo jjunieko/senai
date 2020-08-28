@@ -1,5 +1,5 @@
 import { Component, OnInit,  Inject } from '@angular/core';
-import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import {  MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ApiService } from '../services/api.service';
 
 
@@ -10,16 +10,18 @@ import { ApiService } from '../services/api.service';
 })
 export class DeputadosComponent implements OnInit {
 
+deputado = {} ;
 
-deputado = {};
-
-  constructor(@Inject(MAT_DIALOG_DATA) public data, public apiService: ApiService) { }
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, 
+  public apiService: ApiService
+  ) { }
 
   ngOnInit(): void {
-    const{ id }= this.data;
-    console.log(id);
-    this.apiService.getDeputados(id).subscribe((res)=>{
-     this.deputado = res.dados;
+    const { id } = this.data;
+    //console.log(this.data);
+    this.apiService.getDeputado( id ).subscribe((res)=>{
+     //console.log(res);
+      this.deputado = res.dados;
     });
   }
 }

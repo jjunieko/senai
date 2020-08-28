@@ -39,7 +39,7 @@
     <ng-container matColumnDef="urlFoto">
         <mat-header-cell *matHeaderCellDef class="titulo"> urlFoto </mat-header-cell>
         <mat-cell *matCellDef="let element">
-            <img mat-card-sm-image [src]="element.urlFoto" (onclick)="openModalDeputado(element.idDeputado)">
+            <img mat-card-sm-image [src]="element.urlFoto" (click)="openModalDeputado(element.id)">
         </mat-cell>
     </ng-container>
 
