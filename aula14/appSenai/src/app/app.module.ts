@@ -23,6 +23,8 @@ import { DeputadosComponent } from './deputados/deputados.component';
 
 import {MatDialogModule} from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormatoDataBrasilPipe } from './pipes/formato-data-brasil.pipe';
+import { FormatarCpfPipe } from './pipes/formatar-cpf.pipe';
 
 
 
@@ -34,7 +36,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     PartidosComponent,
     MembrosPartComponent,
     ConverteUfSiglaEmNomePipe,
-    DeputadosComponent
+    DeputadosComponent,
+    FormatoDataBrasilPipe,
+    FormatarCpfPipe
   ],
   imports: [
     BrowserModule,
@@ -49,7 +53,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HttpClientModule,
     BrowserAnimationsModule
   ],
-  providers: [ConverteUfSiglaEmNomePipe],
+  providers: [ConverteUfSiglaEmNomePipe, FormatoDataBrasilPipe, FormatarCpfPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
