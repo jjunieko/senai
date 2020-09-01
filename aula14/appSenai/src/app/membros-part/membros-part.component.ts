@@ -12,32 +12,32 @@ import { MatDialog } from '@angular/material/dialog';
 export class MembrosPartComponent implements OnInit {
 
   membros = [];
-  deputados= [];
+  deputados = [];
   //aulas add membros aos partidos
 
   displayedColumns: string[] = [
-  'id', 
-  'siglaUf',
-  'nome',
-  'email',
-  'idLegislatura',
-  'siglaPartido',
-  'urlFoto'
-];
- 
+    'id',
+    'siglaUf',
+    'nome',
+    'email',
+    'idLegislatura',
+    'siglaPartido',
+    'urlFoto'
+  ];
 
-  constructor(public apiService: ApiService, 
+
+  constructor(public apiService: ApiService,
     public route: ActivatedRoute,
-    public dialog: MatDialog) {}
+    public dialog: MatDialog) { }
 
   ngOnInit(): void {
     const idPartido = this.route.snapshot.paramMap.get('id');
-    this.apiService.getMembros(idPartido).subscribe((res) => {
+    this.apiService.getMembrosDoPartido(idPartido).subscribe((res) => {
       this.membros = res.dados;
-      console.log(this.membros);
+      //console.log(this.membros);
     });
 
-}
+  }
   openModalDeputado(id) {
     const dialogRef = this.dialog.open(DeputadosComponent, {
       data: {
@@ -45,17 +45,17 @@ export class MembrosPartComponent implements OnInit {
       },
     });
 
-   dialogRef.afterClosed().subscribe(result => {
-     console.log(`Dialog result: ${result}`);
-  });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
 
-      //const dialogRef = this.dialog.open(DeputadosComponent,{
-     // data: {
-      //    id
-     //   }
+    //const dialogRef = this.dialog.open(DeputadosComponent,{
+    // data: {
+    //    id
+    //   }
     //});
+  }
 }
-}
-    
 
-  
+
+

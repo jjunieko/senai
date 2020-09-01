@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import moment from 'moment';
+import * as moment from 'moment';
 
 
 @Pipe({
@@ -7,9 +7,9 @@ import moment from 'moment';
 })
 export class FormatoDataBrasilPipe implements PipeTransform {
 
-  transform(data: string): string{
-    
-    var dataFormatada= moment(data, "YYY-MM-DDD" ).format("DD/MM/YYYY");
+  transform(data: string): string {
+
+    var dataFormatada = moment(data, "YYY-MM-DDD").format("DD/MM/YYYY");
     return dataFormatada;
   }
 

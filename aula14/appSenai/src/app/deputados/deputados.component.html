@@ -1,14 +1,15 @@
 <h1 mat-dialog-title class="titulo"> DADOS DEPUTADO </h1>
-<h3 mat-dialog-title class="titulo">  {{deputado.nomeCivil}}</h3>
+<h3 mat-dialog-title class="titulo"> {{deputado.nomeCivil}}</h3>
 <img [src]="deputado.ultimoStatus.urlFoto" alt="">
 <br>
 <br>
-<h5> Nome Partido:  {{deputado.ultimoStatus.siglaPartido }}</h5>
-<h5> NASC:{{deputado.dataNascimento | formatoDataBrasil }}</h5>
+<h5> Nome Partido: {{deputado.ultimoStatus.siglaPartido }}</h5>
+<h5> NASC: {{deputado.dataNascimento | formatoDataBrasil }}</h5>
 <h5>CPF: {{deputado.cpf | formatarCpf}}</h5>
 <h5> Sexo: {{deputado.sexo}}</h5>
 <h5>E-MAIL: {{deputado.ultimoStatus.email}}</h5>
 <h5>TELEFONE: {{deputado.ultimoStatus.gabinete.telefone}}</h5>
+<h6>ESCOLARIDADE: {{deputado.escolaridade}}</h6>
 
 
 

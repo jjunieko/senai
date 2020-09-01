@@ -15,7 +15,7 @@ export class PartidosComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'sigla', 'nome', 'membros'];
   partidos = [];
- 
+
 
   constructor(public apiService: ApiService) { }
 
