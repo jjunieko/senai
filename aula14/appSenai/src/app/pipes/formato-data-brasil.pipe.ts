@@ -9,7 +9,7 @@ export class FormatoDataBrasilPipe implements PipeTransform {
 
   transform(data: string): string {
 
-    var dataFormatada = moment(data, "YYY-MM-DDD").format("DD/MM/YYYY");
+    var dataFormatada = moment(data, "YYY-MM-DDD").format("DD/MM/YY");
     return dataFormatada;
   }
 

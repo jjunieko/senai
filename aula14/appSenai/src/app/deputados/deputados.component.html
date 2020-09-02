@@ -3,8 +3,8 @@
 <img [src]="deputado.ultimoStatus.urlFoto" alt="">
 <br>
 <br>
-<h5> Nome Partido: {{deputado.ultimoStatus.siglaPartido }}</h5>
-<h5> NASC: {{deputado.dataNascimento | formatoDataBrasil }}</h5>
+<h5 appTextColor> Nome Partido: {{deputado.ultimoStatus.siglaPartido }}</h5>
+<h5 appTextColor> NASC: {{deputado.dataNascimento | formatoDataBrasil }}</h5>
 <h5>CPF: {{deputado.cpf | formatarCpf}}</h5>
 <h5> Sexo: {{deputado.sexo}}</h5>
 <h5>E-MAIL: {{deputado.ultimoStatus.email}}</h5>
@@ -14,5 +14,5 @@
 
 
 <mat-dialog-actions alingn="end">
-    <button mat-button mat-dialog-close>Fechar</button>
+    <button mat-button mat-dialog-close appTextColor>Fechar</button>
 </mat-dialog-actions>

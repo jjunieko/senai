@@ -9,13 +9,13 @@
     <!-- Name Column -->
     <ng-container matColumnDef="sigla">
         <mat-header-cell *matHeaderCellDef class="titulo"> Sigla </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.sigla}} </mat-cell>
+        <mat-cell *matCellDef="let element" [appTextoEmNegrito]="color"> {{element.sigla}} </mat-cell>
     </ng-container>
 
     <!-- Weight Column -->
     <ng-container matColumnDef="nome">
         <mat-header-cell *matHeaderCellDef class="titulo"> Nome </mat-header-cell>
-        <mat-cell *matCellDef="let element"> {{element.nome}} </mat-cell>
+        <mat-cell *matCellDef="let element" appTextoEmNegrito> {{ element.nome }} </mat-cell>
     </ng-container>
 
 
