@@ -16,8 +16,8 @@ export class ApiService {
 
   constructor(public httpclient: HttpClient) { }
 
-  public getPartidos(): Observable<ResponseApi> {
-    return this.httpclient.get<ResponseApi>(this.url + 'partidos');
+  public getPartidos(page): Observable<ResponseApi> {
+    return this.httpclient.get<ResponseApi>(this.url + 'partidos?pagina=' + page);
   }
 
   public getMembrosDoPartido(id): Observable<ResponseApi> {

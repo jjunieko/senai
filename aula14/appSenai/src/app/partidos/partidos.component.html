@@ -9,7 +9,7 @@
     <!-- Name Column -->
     <ng-container matColumnDef="sigla">
         <mat-header-cell *matHeaderCellDef class="titulo"> Sigla </mat-header-cell>
-        <mat-cell *matCellDef="let element" [appTextoEmNegrito]="color"> {{element.sigla}} </mat-cell>
+        <mat-cell *matCellDef="let element" appTextoEmNegrito [siglaPartido]="element.sigla"> {{element.sigla}} </mat-cell>
     </ng-container>
 
     <!-- Weight Column -->
@@ -34,3 +34,8 @@
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </mat-table>
+
+<br />
+
+<button mat-stroked-button color="warn" (click)="anteriorPagina()" [disable]="page===1">Anterior</button>
+<button mat-stroked-button color="warn" (click)="proximaPagina()" [disable]="!temProximaPg">Proximo</button>
