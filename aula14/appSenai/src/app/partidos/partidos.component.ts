@@ -1,25 +1,20 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../services/api.service';
-
-
+import { Component, OnInit } from "@angular/core";
+import { ApiService } from "../services/api.service";
 
 @Component({
-  selector: 'app-partidos',
-  templateUrl: './partidos.component.html',
-  styleUrls: ['./partidos.component.css']
+  selector: "app-partidos",
+  templateUrl: "./partidos.component.html",
+  styleUrls: ["./partidos.component.css"],
 })
 export class PartidosComponent implements OnInit {
+  //aulas
 
-
-  //aulas 
-
-  displayedColumns: string[] = ['id', 'sigla', 'nome', 'membros'];
+  displayedColumns: string[] = ["id", "sigla", "nome", "membros"];
   partidos = [];
   page = 1;
   links = [];
 
-
-  constructor(public apiService: ApiService) { }
+  constructor(public apiService: ApiService) {}
 
   ngOnInit(): void {
     this.getPartidos(this.page);
@@ -44,10 +39,8 @@ export class PartidosComponent implements OnInit {
   }
   temProximaPg() {
     const verificacao = this.links.filter((link) => {
-      return link.rel === 'next';
-
+      return link.rel === "next";
     });
     return verificacao.length > 0;
   }
-
 }

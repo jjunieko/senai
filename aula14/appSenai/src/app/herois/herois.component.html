@@ -1,0 +1,35 @@
+<div>
+    <br />
+    <form [formGroup]="form">
+        <br />
+        <mat-form-field appearance="legacy">
+            <mat-label>Nome do Heroi</mat-label>
+            <input formControlName="nome" name="nome" matInput placeholder="Descreva nome do heroi" />
+            <mat-icon matSuffix>face</mat-icon>
+            <mat-hint>HEROIS</mat-hint>
+        </mat-form-field>
+        <button type="button" (click)="salvarHeroi()" mat-raised-button color="primary">
+      Salvar
+    </button>
+    </form>
+
+    <br />
+
+    <mat-table [dataSource]="herois" class="mat-elevation-z8">
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+            <mat-header-cell *matHeaderCellDef class="titulo"> # </mat-header-cell>
+            <mat-cell *matCellDef="let i = index"> {{ i }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="nome">
+            <mat-header-cell *matHeaderCellDef class="titulo">
+                NOME
+            </mat-header-cell>
+            <mat-cell *matCellDef="let element"> {{element.nome}} </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+    </mat-table>
+</div>

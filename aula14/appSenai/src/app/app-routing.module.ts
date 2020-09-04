@@ -1,39 +1,43 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { AngularComponent } from './angular/angular.component';
-import { ReactComponent} from './react/react.component';
-import { PartidosComponent} from './partidos/partidos.component';
-import { MembrosPartComponent } from './membros-part/membros-part.component';
-import { DeputadosComponent } from './deputados/deputados.component';
-
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
+import { AngularComponent } from "./angular/angular.component";
+import { ReactComponent } from "./react/react.component";
+import { PartidosComponent } from "./partidos/partidos.component";
+import { MembrosPartComponent } from "./membros-part/membros-part.component";
+import { DeputadosComponent } from "./deputados/deputados.component";
+import { HeroisComponent } from "./herois/herois.component";
 
 const routes: Routes = [
   {
-    path: 'angular', 
+    path: "angular",
     component: AngularComponent,
   },
   {
-    path: 'react', 
+    path: "react",
     component: ReactComponent,
   },
   {
-    path: 'partidos', 
+    path: "partidos",
     component: PartidosComponent,
   },
 
   {
-    path: 'partidos/:id/membros', 
+    path: "partidos/:id/membros",
     component: MembrosPartComponent,
   },
   {
-    path: 'deputados/:id', 
+    path: "deputados/:id",
     component: DeputadosComponent,
   },
 
+  {
+    path: "herois",
+    component: HeroisComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
