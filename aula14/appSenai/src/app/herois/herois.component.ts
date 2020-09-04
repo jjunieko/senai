@@ -8,7 +8,7 @@ import { HeroisService } from "../services/herois.service";
   styleUrls: ["./herois.component.css"],
 })
 export class HeroisComponent implements OnInit {
-  displayedColumns: string[] = ["id", "nome"];
+  displayedColumns: string[] = ["id", "nome", "poder"];
   public form: FormGroup;
   herois = [];
 
