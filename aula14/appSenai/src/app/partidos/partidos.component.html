@@ -38,9 +38,9 @@
 
 <br />
 
-<button mat-stroked-button color="warn" (click)="anteriorPagina()">
+<button mat-stroked-button color="warn" [disabled]="page===1" (click)="anteriorPagina()">
   Anterior
 </button>
-<button mat-stroked-button color="warn" (click)="proximaPagina()">
+<button mat-stroked-button color="warn" (click)="proximaPagina()" [disabled]="!temProximaPg()">
   Proximo
 </button>

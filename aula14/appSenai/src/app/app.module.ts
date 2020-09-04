@@ -50,7 +50,6 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     MatToolbarModule,
     MatButtonModule,
     MatCardModule,
-    MatFormFieldModule,
     MatTableModule,
     MatDialogModule,
     HttpClientModule,

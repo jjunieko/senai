@@ -17,16 +17,6 @@ export class HeroisComponent implements OnInit {
     private HeroisService: HeroisService
   ) {}
 
-  salvarHeroi() {
-    //value serve para pegar um valor de um objeto
-    //console.log(this.form.value);
-    this.HeroisService.setHeroi(this.form.value);
-    this.buscarHerois();
-  }
-  buscarHerois() {
-    this.herois = this.HeroisService.getHerois();
-  }
-
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       nome: [""],
@@ -34,5 +24,15 @@ export class HeroisComponent implements OnInit {
 
     this.buscarHerois();
     console.log(this.herois);
+  }
+  salvarHeroi() {
+    //value serve para pegar um valor de um objeto
+    //console.log(this.form.value);
+    this.HeroisService.setHeroi(this.form.value);
+    this.buscarHerois();
+  }
+
+  buscarHerois() {
+    this.herois = this.HeroisService.getHerois();
   }
 }
