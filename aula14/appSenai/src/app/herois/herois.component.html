@@ -1,58 +1,108 @@
-<div>
-    <br />
-    <form [formGroup]="form" class="container">
-        <br />
-        <mat-form-field appearance="legacy">
-            <mat-label>Nome do Heroi</mat-label>
-            <input formControlName="nome" name="nome" matInput placeholder="Descreva nome do heroi" />
-            <mat-icon matSuffix>face</mat-icon>
-            <mat-hint>Hint</mat-hint>
+<br />
+<form [formGroup]="form" class="container">
 
+    <mat-form-field appearance="legacy">
+        <mat-label>Nome do Heroi</mat-label>
+        <input formControlName="nome" name="nome" matInput placeholder="Descreva nome do heroi" required />
+        <mat-icon matSuffix>face</mat-icon>
+        <mat-error *ngIf="form.invalid">{{ getErrorMessage("nome") }}</mat-error>
+    </mat-form-field>
 
+    <button type="button" (click)="salvarHeroi()" color="primary" [disabled]="form.invalid"> 
+        <mat-icon matSuffix>save</mat-icon> Salvar </button>
 
-        </mat-form-field>
-        <button type="button" (click)="salvarHeroi()" mat-raised-button color="primary"> 
-            <mat-icon matSuffix>save</mat-icon>
-      Salvar
-    </button>
-        <br />
+    <button type="button" (click)="resetHeroi()" color="primary" [disabled]="form.invalid"> 
+        <mat-icon matSuffix>delete</mat-icon> Resetar </button>
 
-        <mat-form-field appearance="legacy">
-            <mat-label>Nome do Poder</mat-label>
-            <input formControlName="poder" name="poder" matInput placeholder="Descreva o nome do Poder" />
-            <mat-icon matSuffix>face</mat-icon>
-            <mat-hint>Hint</mat-hint>
-        </mat-form-field>
-
-
-    </form>
 
     <br />
 
-    <mat-table [dataSource]="herois" class="mat-elevation-z8">
-        <!-- Position Column -->
-        <ng-container matColumnDef="id">
-            <mat-header-cell *matHeaderCellDef class="titulo"> # </mat-header-cell>
-            <mat-cell *matCellDef="let i = index"> {{ i }} </mat-cell>
-        </ng-container>
+    <mat-form-field class="example-full-width">
+        <mat-label>Me diga Seus Poderes</mat-label>
+        <textarea formControlName="poder" matInput placeholder="Me diga seus Poderes"></textarea>
+        <mat-error *ngIf="form.invalid">{{ getErrorMessage("poder") }}</mat-error>
+    </mat-form-field>
 
-        <ng-container matColumnDef="nome">
-            <mat-header-cell *matHeaderCellDef class="titulo">
-                <mat-icon matSuffix>face</mat-icon>
-                NOME
-            </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.nome}} </mat-cell>
-        </ng-container>
 
-        <ng-container matColumnDef="poder">
-            <mat-header-cell *matHeaderCellDef class="titulo">
-                <mat-icon matSuffix>gavel</mat-icon>
-                PODER
-            </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.poder}} </mat-cell>
-        </ng-container>
+    <br />
 
-        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-        <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
-    </mat-table>
-</div>
+
+    <mat-form-field appearance="fill">
+        <mat-label>Franquia</mat-label>
+        <mat-select formControlName="franquia">
+            <mat-option value="Marvel"> Marvel </mat-option>
+            <mat-option value="DC Comics">DC Comics</mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.invalid">{{ getErrorMessage("franquia") }}</mat-error>
+    </mat-form-field>
+
+
+
+    <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="sexo">
+        <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+            Masculino
+        </mat-radio-button>
+        <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+            Feminino
+        </mat-radio-button>
+        <mat-error *ngIf="form.invalid">{{ getErrorMessage("sexo") }}</mat-error>
+    </mat-radio-group>
+</form>
+
+
+<br />
+
+<mat-table [dataSource]="herois" class="mat-elevation-z8">
+    <!-- Position Column -->
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef class="titulo"> # </mat-header-cell>
+        <mat-cell *matCellDef="let i = index"> {{ i + i }} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="nome">
+        <mat-header-cell *matHeaderCellDef class="titulo">
+            <mat-icon matSuffix>face</mat-icon>
+            NOME
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.nome}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="acoes">
+        <mat-header-cell *matHeaderCellDef class="titulo">
+            <mat-icon matSuffix>face</mat-icon>
+            AÇÕES
+        </mat-header-cell>
+        <mat-cell *matCellDef="let i = index">
+            <a mat-raised-button color="accent" (click)="removerHeroi(i)" [disabled]="form.invalid">
+                <mat-icon matSuffix>delete</mat-icon>
+            </a>
+        </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="sexo">
+        <mat-header-cell *matHeaderCellDef class="titulo">
+            <mat-icon matSuffix>face</mat-icon>
+            SEXO
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.sexo}} </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="franquia">
+        <mat-header-cell *matHeaderCellDef class="titulo">
+            FRANQUIA
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.franquia}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="poder">
+        <mat-header-cell *matHeaderCellDef class="titulo">
+            PODER
+        </mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{element.poder}} </mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>

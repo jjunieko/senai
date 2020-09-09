@@ -15,8 +15,18 @@ export class HeroisService {
     //const herois = JSON.parse(localStorage.getItem("herois")) || [];
     const herois = this.getHerois();
     herois.push(heroi);
-    localStorage.setItem("herois", JSON.stringify(herois));
+    localStorage.setItem("herois", JSON.stringify("herois"));
     // localStorage.setItem("herois", JSON.stringify(heroi));
     //console.log(heroi);
+  }
+  remover(index) {
+    const herois = this.getHerois();
+    herois.splice(index, 1);
+    localStorage.setItem("herois", JSON.stringify(herois));
+  }
+
+  removeAll() {
+    localStorage.setItem("herois", JSON.stringify([]));
+    //localStorage.clear();
   }
 }

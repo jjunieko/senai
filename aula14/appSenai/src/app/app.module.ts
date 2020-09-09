@@ -27,6 +27,8 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { FormBuilder } from "@angular/forms";
 import { MatInputModule } from "@angular/material/input";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatRadioModule } from "@angular/material/radio";
+import { MatSelectModule } from "@angular/material/select";
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
     TextoEmNegritoDirective,
     TextColorDirective,
     HeroisComponent,
+    MatRadioModule,
+    MatSelectModule,
   ],
   imports: [
     BrowserModule,
