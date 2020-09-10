@@ -17,11 +17,12 @@ export class HeroisComponent implements OnInit {
     "acoes",
   ];
   public form: FormGroup;
+  public isEdit: boolean = false;
   herois = [];
 
   constructor(
     public formBuilder: FormBuilder,
-    private HeroisService: HeroisService
+    private heroisService: HeroisService
   ) {}
 
   getErrorMessage(field: string) {
@@ -35,6 +36,7 @@ export class HeroisComponent implements OnInit {
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
+      id: [""],
       nome: ["", [Validators.required]],
       sexo: ["", [Validators.required]],
       franquia: ["", [Validators.required]],
@@ -46,40 +48,42 @@ export class HeroisComponent implements OnInit {
   }
 
   resetarForm() {
+    this.isEdit = false;
     this.form.reset();
   }
 
   salvarHeroi() {
-    if (!this.form.valid) {
+    if (this.form.valid) {
       //return;
       //}
       //value serve para pegar um valor de um objeto
       //console.log(this.form.value);
-      this.HeroisService.setHeroi(this.form.value);
+      this.heroisService.setHeroi(this.form.value);
       this.buscarHerois();
       this.resetarForm();
-    } else {
-      alert("vazio");
     }
   }
 
   buscarHerois() {
-    this.herois = this.HeroisService.getHerois();
+    this.herois = this.heroisService.getHerois();
   }
-
-  //resetHeroi() {
-  // this.HeroisService.resetar();
-  // this.buscarHerois();
-  //}
 
   removerHeroi(index) {
     //console.log(index);
-    this.HeroisService.remover(index);
+    this.heroisService.remover(index);
     this.buscarHerois();
   }
 
   removerTodos() {
-    this.HeroisService.removeAll();
+    this.heroisService.removeAll();
     this.buscarHerois();
+  }
+
+  editarHeroi(index) {
+    let heroi = this.heroisService.findHeroi(index);
+    heroi.id = index;
+    this.form.patchValue(heroi);
+    this.isEdit = true;
+    console.log(heroi);
   }
 }

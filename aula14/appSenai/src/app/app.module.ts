@@ -44,8 +44,6 @@ import { MatSelectModule } from "@angular/material/select";
     TextoEmNegritoDirective,
     TextColorDirective,
     HeroisComponent,
-    MatRadioModule,
-    MatSelectModule,
   ],
   imports: [
     BrowserModule,
@@ -62,6 +60,8 @@ import { MatSelectModule } from "@angular/material/select";
     MatInputModule,
     FormsModule,
     ReactiveFormsModule,
+    MatRadioModule,
+    MatSelectModule,
   ],
   providers: [
     ConverteUfSiglaEmNomePipe,

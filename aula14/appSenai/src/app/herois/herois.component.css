@@ -41,21 +41,19 @@ section {
 
 .container {
     font-size: 18px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     padding: 20px;
     color: blue;
 }
 
 mat-label {
     margin: 50px;
-    width: 50%px;
+    width: 70%px;
 }
 
 button {
-    height: 90px;
-    width: 150px;
-    margin: 20px;
-    padding: 20px 20px;
+    margin: 5px;
+    padding: 5px;
 }
 
 .example-radio-group {
@@ -75,5 +73,5 @@ button {
 }
 
 .example-full-width {
-    width: 100%;
+    width: 50%;
 }

@@ -1,6 +1,6 @@
 <br />
 <form [formGroup]="form" class="container">
-
+    <input type="hidden" name="id" formControlName="id">
     <mat-form-field appearance="legacy">
         <mat-label>Nome do Heroi</mat-label>
         <input formControlName="nome" name="nome" matInput placeholder="Descreva nome do heroi" required />
@@ -9,10 +9,10 @@
     </mat-form-field>
 
     <button type="button" (click)="salvarHeroi()" color="primary" [disabled]="form.invalid"> 
-        <mat-icon matSuffix>save</mat-icon> Salvar </button>
+        <mat-icon matSuffix>save</mat-icon>{{ isEdit? "Atualizar" : "salvar"}}</button>
 
-    <button type="button" (click)="resetHeroi()" color="primary" [disabled]="form.invalid"> 
-        <mat-icon matSuffix>delete</mat-icon> Resetar </button>
+    <button type="button" (click)="removerTodos()" color="primary" [disabled]="form.invalid"> 
+        <mat-icon matSuffix>delete</mat-icon> Remove Todos Herois </button>
 
 
     <br />
@@ -26,7 +26,6 @@
 
     <br />
 
-
     <mat-form-field appearance="fill">
         <mat-label>Franquia</mat-label>
         <mat-select formControlName="franquia">
@@ -39,10 +38,10 @@
 
 
     <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group" formControlName="sexo">
-        <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+        <mat-radio-button class="example-radio-button" value="Masculino">
             Masculino
         </mat-radio-button>
-        <mat-radio-button class="example-radio-button" *ngFor="let season of seasons" [value]="season">
+        <mat-radio-button class="example-radio-button" value="Feminino">
             Feminino
         </mat-radio-button>
         <mat-error *ngIf="form.invalid">{{ getErrorMessage("sexo") }}</mat-error>
@@ -61,22 +60,10 @@
 
     <ng-container matColumnDef="nome">
         <mat-header-cell *matHeaderCellDef class="titulo">
-            <mat-icon matSuffix>face</mat-icon>
+            <mat-icon matSuffix>supervised_user_circle</mat-icon>
             NOME
         </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.nome}} </mat-cell>
-    </ng-container>
-
-    <ng-container matColumnDef="acoes">
-        <mat-header-cell *matHeaderCellDef class="titulo">
-            <mat-icon matSuffix>face</mat-icon>
-            AÇÕES
-        </mat-header-cell>
-        <mat-cell *matCellDef="let i = index">
-            <a mat-raised-button color="accent" (click)="removerHeroi(i)" [disabled]="form.invalid">
-                <mat-icon matSuffix>delete</mat-icon>
-            </a>
-        </mat-cell>
     </ng-container>
 
     <ng-container matColumnDef="sexo">
@@ -87,9 +74,9 @@
         <mat-cell *matCellDef="let element"> {{element.sexo}} </mat-cell>
     </ng-container>
 
-
     <ng-container matColumnDef="franquia">
         <mat-header-cell *matHeaderCellDef class="titulo">
+            <mat-icon>trending_down</mat-icon>
             FRANQUIA
         </mat-header-cell>
         <mat-cell *matCellDef="let element"> {{element.franquia}} </mat-cell>
@@ -102,6 +89,20 @@
         <mat-cell *matCellDef="let element"> {{element.poder}} </mat-cell>
     </ng-container>
 
+    <ng-container matColumnDef="acoes">
+        <mat-header-cell *matHeaderCellDef class="titulo">
+            <mat-icon>add_circle_outline</mat-icon>
+            AÇÕES
+        </mat-header-cell>
+        <mat-cell *matCellDef="let i = index">
+            <a mat-raised-button color="accent" (click)="removerHeroi(i)">
+                <mat-icon matSuffix>delete</mat-icon>
+            </a>
+            <a mat-raised-button color="accent" (click)="editarHeroi(i)">
+                <mat-icon matSuffix>edit</mat-icon>
+            </a>
+        </mat-cell>
+    </ng-container>
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>

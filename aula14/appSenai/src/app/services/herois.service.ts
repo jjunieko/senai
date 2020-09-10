@@ -11,14 +11,33 @@ export class HeroisService {
     return herois;
   }
 
-  public setHeroi(heroi: object) {
-    //const herois = JSON.parse(localStorage.getItem("herois")) || [];
+  public setHeroi(heroi: Object) {
+    if (heroi.id || heroi.id == 0) {
+      // atualizar heroi que já existe
+      this.atualizarHeroi(heroi);
+    } else {
+      this.cadastrarHeroi(heroi);
+    }
+  }
+
+  atualizarHeroi(heroi) {
+    let herois = this.getHerois();
+    herois = herois.map((data, index) => {
+      if (heroi.id == index) {
+        return heroi;
+      } else {
+        return data;
+      }
+    });
+    localStorage.setItem("herois", JSON.stringify(herois));
+  }
+
+  cadastrarHeroi(heroi) {
     const herois = this.getHerois();
     herois.push(heroi);
-    localStorage.setItem("herois", JSON.stringify("herois"));
-    // localStorage.setItem("herois", JSON.stringify(heroi));
-    //console.log(heroi);
+    localStorage.setItem("herois", JSON.stringify(herois));
   }
+
   remover(index) {
     const herois = this.getHerois();
     herois.splice(index, 1);
@@ -28,5 +47,17 @@ export class HeroisService {
   removeAll() {
     localStorage.setItem("herois", JSON.stringify([]));
     //localStorage.clear();
+  }
+
+  findHeroi(chaveUnica) {
+    const herois = this.getHerois();
+    const heroi = herois.find((data, index) => {
+      //console.log(data);
+      if (chaveUnica === index) {
+        //console.log(data);
+        return data;
+      }
+    });
+    return heroi;
   }
 }
