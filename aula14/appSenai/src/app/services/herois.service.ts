@@ -1,17 +1,16 @@
 import { Injectable } from "@angular/core";
+import { Heroi } from "../models/heroi.model";
 
 @Injectable({
   providedIn: "root",
 })
 export class HeroisService {
-  constructor() {}
-
-  public getHerois() {
+  public getHerois(): Array<Heroi> {
     const herois = JSON.parse(localStorage.getItem("herois")) || [];
     return herois;
   }
 
-  public setHeroi(heroi: Object) {
+  public setHeroi(heroi: Heroi): void {
     if (heroi.id || heroi.id == 0) {
       // atualizar heroi que já existe
       this.atualizarHeroi(heroi);
@@ -20,7 +19,7 @@ export class HeroisService {
     }
   }
 
-  atualizarHeroi(heroi) {
+  atualizarHeroi(heroi: Heroi): void {
     let herois = this.getHerois();
     herois = herois.map((data, index) => {
       if (heroi.id == index) {
@@ -29,19 +28,22 @@ export class HeroisService {
         return data;
       }
     });
-    localStorage.setItem("herois", JSON.stringify(herois));
+    //localStorage.setItem("herois", JSON.stringify(herois));
+    this.armazenarHeroisLocalStorage(herois);
   }
 
-  cadastrarHeroi(heroi) {
+  cadastrarHeroi(heroi: Heroi): void {
     const herois = this.getHerois();
     herois.push(heroi);
-    localStorage.setItem("herois", JSON.stringify(herois));
+    //localStorage.setItem("herois", JSON.stringify(herois));
+    this.armazenarHeroisLocalStorage(herois);
   }
 
-  remover(index) {
+  remover(index: number): void {
     const herois = this.getHerois();
     herois.splice(index, 1);
-    localStorage.setItem("herois", JSON.stringify(herois));
+    //localStorage.setItem("herois", JSON.stringify(herois));
+    this.armazenarHeroisLocalStorage(herois);
   }
 
   removeAll() {
@@ -49,7 +51,11 @@ export class HeroisService {
     //localStorage.clear();
   }
 
-  findHeroi(chaveUnica) {
+  armazenarHeroisLocalStorage(herois: Array<Heroi>): void {
+    localStorage.setItem("herois", JSON.stringify(herois));
+  }
+
+  findHeroi(chaveUnica: number): Heroi {
     const herois = this.getHerois();
     const heroi = herois.find((data, index) => {
       //console.log(data);

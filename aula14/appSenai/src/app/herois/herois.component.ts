@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { HeroisService } from "../services/herois.service";
+import { Heroi } from "../models/heroi.model";
 
 @Component({
   selector: "app-herois",
@@ -8,7 +9,7 @@ import { HeroisService } from "../services/herois.service";
   styleUrls: ["./herois.component.css"],
 })
 export class HeroisComponent implements OnInit {
-  displayedColumns: string[] = [
+  displayedColumns: Array<string> = [
     "id",
     "nome",
     "sexo",
@@ -18,14 +19,14 @@ export class HeroisComponent implements OnInit {
   ];
   public form: FormGroup;
   public isEdit: boolean = false;
-  herois = [];
+  public herois: Array<Heroi> = [];
 
   constructor(
     public formBuilder: FormBuilder,
     private heroisService: HeroisService
   ) {}
 
-  getErrorMessage(field: string) {
+  getErrorMessage(field: string): string {
     if (this.form.get(field).hasError("required")) {
       return "O campo " + field + " é obrigatório!!!";
     }
@@ -47,12 +48,12 @@ export class HeroisComponent implements OnInit {
     console.log(this.herois);
   }
 
-  resetarForm() {
+  resetarForm(): void {
     this.isEdit = false;
     this.form.reset();
   }
 
-  salvarHeroi() {
+  salvarHeroi(): void {
     if (this.form.valid) {
       //return;
       //}
@@ -64,22 +65,22 @@ export class HeroisComponent implements OnInit {
     }
   }
 
-  buscarHerois() {
+  buscarHerois(): void {
     this.herois = this.heroisService.getHerois();
   }
 
-  removerHeroi(index) {
+  removerHeroi(index): void {
     //console.log(index);
     this.heroisService.remover(index);
     this.buscarHerois();
   }
 
-  removerTodos() {
+  removerTodos(): void {
     this.heroisService.removeAll();
     this.buscarHerois();
   }
 
-  editarHeroi(index) {
+  editarHeroi(index): void {
     let heroi = this.heroisService.findHeroi(index);
     heroi.id = index;
     this.form.patchValue(heroi);

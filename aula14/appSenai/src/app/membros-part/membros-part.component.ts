@@ -1,51 +1,50 @@
-import { Component, OnInit } from '@angular/core';
-import { ApiService } from '../services/api.service';
-import { ActivatedRoute } from '@angular/router';
-import { DeputadosComponent } from '../deputados/deputados.component';
-import { MatDialog } from '@angular/material/dialog';
+import { Component, OnInit } from "@angular/core";
+import { ApiService } from "../services/api.service";
+import { ActivatedRoute } from "@angular/router";
+import { DeputadosComponent } from "../deputados/deputados.component";
+import { MatDialog } from "@angular/material/dialog";
 
 @Component({
-  selector: 'app-membros-part',
-  templateUrl: './membros-part.component.html',
-  styleUrls: ['./membros-part.component.css']
+  selector: "app-membros-part",
+  templateUrl: "./membros-part.component.html",
+  styleUrls: ["./membros-part.component.css"],
 })
 export class MembrosPartComponent implements OnInit {
-
-  membros = [];
-  deputados = [];
+  membros: any = [];
+  deputados: any = [];
   //aulas add membros aos partidos
 
   displayedColumns: string[] = [
-    'id',
-    'siglaUf',
-    'nome',
-    'email',
-    'idLegislatura',
-    'siglaPartido',
-    'urlFoto'
+    "id",
+    "siglaUf",
+    "nome",
+    "email",
+    "idLegislatura",
+    "siglaPartido",
+    "urlFoto",
   ];
 
-
-  constructor(public apiService: ApiService,
+  constructor(
+    public apiService: ApiService,
     public route: ActivatedRoute,
-    public dialog: MatDialog) { }
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
-    const idPartido = this.route.snapshot.paramMap.get('id');
+    const idPartido = this.route.snapshot.paramMap.get("id");
     this.apiService.getMembrosDoPartido(idPartido).subscribe((res) => {
       this.membros = res.dados;
       //console.log(this.membros);
     });
-
   }
-  openModalDeputado(id) {
+  openModalDeputado(id: number) {
     const dialogRef = this.dialog.open(DeputadosComponent, {
       data: {
         id: id,
       },
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
     });
 
@@ -56,6 +55,3 @@ export class MembrosPartComponent implements OnInit {
     //});
   }
 }
-
-
-

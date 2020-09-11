@@ -7,12 +7,10 @@ import { ApiService } from "../services/api.service";
   styleUrls: ["./partidos.component.css"],
 })
 export class PartidosComponent implements OnInit {
-  //aulas
-
-  displayedColumns: string[] = ["id", "sigla", "nome", "membros"];
-  partidos = [];
-  page = 1;
-  links = [];
+  displayedColumns: Array<string> = ["id", "sigla", "nome", "membros"];
+  partidos: any = [];
+  page: number = 1;
+  links: any = [];
 
   constructor(public apiService: ApiService) {}
 
@@ -20,7 +18,7 @@ export class PartidosComponent implements OnInit {
     this.getPartidos(this.page);
   }
 
-  getPartidos(page = 1) {
+  getPartidos(page: number = 1): void {
     this.apiService.getPartidos(page).subscribe((response) => {
       this.partidos = response.dados;
       this.links = response.links;
@@ -28,16 +26,16 @@ export class PartidosComponent implements OnInit {
     });
   }
 
-  anteriorPagina() {
+  anteriorPagina(): void {
     if (this.page === 1) {
       return;
     }
     this.getPartidos(--this.page);
   }
-  proximaPagina() {
+  proximaPagina(): void {
     this.getPartidos(++this.page);
   }
-  temProximaPg() {
+  temProximaPg(): boolean {
     const verificacao = this.links.filter((link) => {
       return link.rel === "next";
     });
